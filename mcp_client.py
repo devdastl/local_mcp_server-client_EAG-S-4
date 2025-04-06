@@ -17,7 +17,7 @@ import pyautogui
 api_key = os.getenv("API_TOKEN")
 client = genai.Client(api_key=api_key)
 
-max_iterations = 12
+max_iterations = 15
 last_response = None
 iteration = 0
 iteration_response = []
@@ -149,8 +149,8 @@ Examples:
 DO NOT include any explanations or additional text.
 Your entire response should be a single line starting with either FUNCTION_CALL: or FINAL_ANSWER:"""
 
-                query = """Find the ASCII values of characters in INDIA and then return sum of exponentials of those values. After getting the final answer, open pinta application and draw a rectangle with coordinates (592,496,1156,720) and write your final output in the center of that rectangle.
-                After that draw circle of radius 30 in the middle of bottom line of that rectangle"""
+                query = """Find the ASCII values of characters in INDIA and then return sum of exponentials of those values. After getting the answer, open pinta application and draw a rectangle with coordinates (592,496,1156,720) and write your answer in the center of that rectangle.
+                After that draw two circles of radius 30 and 50 resp. First circle in the middle of bottom line and second circle in the middle of top line of already drawn rectangle"""
                 print("Starting iteration loop...")
                 
                 # Use global iteration variables
@@ -276,45 +276,7 @@ Your entire response should be a single line starting with either FUNCTION_CALL:
 
                     elif response_text.startswith("FINAL_ANSWER:"):
                         print("\n=== Agent Execution Complete ===")
-                        #result = await session.call_tool("open_pinta_application")
-                        #print(result.content[0].text)
-
-                        ## Wait longer for Pinta to be fully maximized
-                        #await asyncio.sleep(1)
-                        #
-                        ##select rectangle tool in pinta
-                        #result = await session.call_tool("select_rectangle_tool")
-                        #print(result.content[0].text)
-
-                        ## Draw a rectangle
-                        #result = await session.call_tool(
-                        #    "draw_rectangle",
-                        #    arguments={
-                        #        "x1": 592,
-                        #        "y1": 496,
-                        #        "x2": 1156,
-                        #        "y2": 720
-                        #    }
-                        #)
-                        #print(result.content[0].text)
-                        #
-                        ##select text tool in pinta
-                        #result = await session.call_tool("select_text_tool")
-                        #print(result.content[0].text)
-
-                        ##write text inside rectange
-                        #result = await session.call_tool(
-                        #    "write_text_inside_rectangle",
-                        #    arguments={
-                        #        "text": response_text,
-                        #        "x1": 592,
-                        #        "y1": 496,
-                        #        "x2": 1156,
-                        #        "y2": 720
-                        #    }
-                        #)
-                        #print(result.content[0].text)
-                        break
+                        #print(f"final prompt to LLM is\n\n {50*'*'}\n{prompt}\n{50*'*'}")
 
                     iteration += 1
 
