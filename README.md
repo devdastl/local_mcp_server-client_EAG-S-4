@@ -10,6 +10,10 @@ The project is managed using [`uv`](https://github.com/astral-sh/uv), a fast Pyt
 
 - `mcp_server.py` — Hosts the MCP server with 28 tools available for interaction.
 - `mcp_client.py` — The entry point of the project; runs a client that connects to the MCP server and calls its tools.
+- `pyproject.toml` — Project configuration and dependencies using [PEP 621](https://peps.python.org/pep-0621/).
+- `uv.lock` — Auto-generated lockfile for reproducible installations using `uv`.
+- `token.env` — Environment file that likely contains secrets or tokens.
+- `README.md` — Project documentation."""
 
 ---
 
